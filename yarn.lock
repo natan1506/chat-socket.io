@@ -711,6 +711,11 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
+jquery-emoji-picker@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/jquery-emoji-picker/-/jquery-emoji-picker-0.2.2.tgz#7e2bd55857cbecfce2f143b3d6c3e153a0eb2658"
+  integrity sha1-fivVWFfL7Pzi8UOz1sPhU6DrJlg=
+
 latest-version@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/latest-version/-/latest-version-3.1.0.tgz#a205383fea322b33b5ae3b18abee0dc2f356ee15"

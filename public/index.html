@@ -6,23 +6,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Chat</title>
 
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="../lib/css/emoji.css" rel="stylesheet" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <section class="form-section">
       <form id="chat">
         <input type="text" name="username" placeholder="Digite seu usuário" />
         <div class="messages"></div>
-        <input type="text" name="message" placeholder="Digite sua mensagem" />
+        <p class="emoji-picker-container">
+          <input
+            type="text"
+            name="message"
+            placeholder="Digite sua mensagem"
+            data-emojiable="true"
+          />
+        </p>
         <button type="submit">Enviar</button>
       </form>
     </section>
-
+    <script>
+      $(function() {
+        window.emojiPicker = new EmojiPicker({
+          emojiable_selector: "[data-emojiable=true]",
+          assetsPath: "../lib/img/",
+          popupButtonClasses: "fa fa-smile-o"
+        });
+        window.emojiPicker.discover();
+      });
+    </script>
     <script type="text/javascript">
-      var socket = io("http://localhost:3000");
+      var socket = io("http://192.168.31.238:3000");
 
       function renderMessage(message) {
         $(".messages").append(
@@ -59,8 +86,18 @@
           renderMessage(messageObject);
 
           socket.emit("sendMessage", messageObject);
+          $("input[name=message]").html("");
         }
       });
     </script>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Begin emoji-picker JavaScript -->
+    <script src="../lib/js/config.js"></script>
+    <script src="../lib/js/util.js"></script>
+    <script src="../lib/js/jquery.emojiarea.js"></script>
+    <script src="../lib/js/emoji-picker.js"></script>
+    <!-- End emoji-picker JavaScript -->
   </body>
 </html>
